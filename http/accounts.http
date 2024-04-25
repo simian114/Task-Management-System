@@ -1,0 +1,33 @@
+
+###
+POST http://localhost:8080/api/accounts
+Content-Type: application/json
+
+{
+  "email": "user@gmail.com",
+  "password": "password"
+}
+
+### user 2
+POST http://localhost:8080/api/accounts
+Content-Type: application/json
+
+{
+  "email": "user2@gmail.com",
+  "password": "password"
+}
+
+### login
+POST http://localhost:8080/api/auth/token
+Content-Type: application/json
+Authorization: Basic user@gmail.com password
+
+> {% client.global.set("user_token", response.body.token); %}
+
+
+### login with user2
+POST http://localhost:8080/api/auth/token
+Content-Type: application/json
+Authorization: Basic user2@gmail.com password
+
+> {% client.global.set("user2_token", response.body.token); %}

@@ -1,0 +1,88 @@
+### CREATE task
+POST localhost:8080/api/tasks
+Content-Type: application/json
+Authorization: Bearer {{user_token}}
+
+{
+  "title": "hello2",
+  "description": "world"
+}
+
+### show all
+GET localhost:8080/api/tasks
+Authorization: Bearer {{user_token}}
+
+### show all
+GET localhost:8080/api/tasks?author=user@gmail.com&assignee=user2@gmail.com
+Authorization: Bearer {{user_token}}
+
+### show all
+GET localhost:8080/api/tasks?assignee=user2@gmail.com
+Authorization: Bearer {{user_token}}
+
+### show all by user2
+GET localhost:8080/api/tasks?author=user2@gmail.com
+Authorization: Basic {{user2_token}}
+
+### assign
+PUT localhost:8080/api/tasks/1/assign
+Content-Type: application/json
+Authorization: Bearer {{user_token}}
+
+{
+  "assignee": "user2@gmail.com"
+}
+
+### assign
+PUT localhost:8080/api/tasks/1/assign
+Content-Type: application/json
+Authorization: Bearer {{user_token}}
+
+{
+  "assignee": "user@gmail.com"
+}
+
+
+### assign with 2
+PUT localhost:8080/api/tasks/1/assign
+Content-Type: application/json
+Authorization: Bearer {{user2_token}}
+
+{
+  "assignee": "none"
+}
+
+### change status
+PUT localhost:8080/api/tasks/9/status
+Content-Type: application/json
+Authorization: Bearer {{user_token}}
+
+{
+  "status": "IN_PROGRESS"
+}
+
+### change status with 2
+PUT localhost:8080/api/tasks/1/status
+Content-Type: application/json
+Authorization: Bearer {{user2_token}}
+
+{
+  "status": "COMPLETED"
+}
+
+### test
+GET localhost:8080/api/test
+Authorization: Bearer {{user_token}}
+
+### add comment
+POST localhost:8080/api/tasks/1/comments
+Content-Type: application/json
+Authorization: Bearer {{user_token}}
+
+{
+  "text": "hello world haha hoho"
+}
+
+### get all comment of task 1
+GET localhost:8080/api/tasks/1/comments
+Authorization: Bearer {{user_token}}
